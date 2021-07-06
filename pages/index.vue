@@ -9,14 +9,13 @@
         My gnarly Nuxt.js project
       </h2>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
+        <nuxt-link 
+        v-for="post in posts" 
+        :key="post.id"
+        :to="{name: `posts-id`, params:{id: post.id}}"
+        class="button--grey">
+          {{post.title}}
+        </nuxt-link>
       </div>
     </div>
   </section>
@@ -27,6 +26,22 @@ import Logo from '@/components/NuxtLogo.vue';
 export default {
   components:{
     Logo
+  },
+  head(){
+    return {
+      title: 'Home Page 🌶',
+      meta: [
+          {name: 'twitter:title', content: 'Nuxt Fundamentals Trannig'},
+          {name: 'twitter:description', content: 'NUXT + IVAN = 🤑'},
+          {name: 'twitter:image', content: 'https://i.imgur.com/UYP2umJ.png'},
+          {name: 'twitter:card', content: 'summary_large_image'},
+        ]
+    },
+  },
+  computed: {
+    posts(){
+      return this.$store.state.posts.all;
+    }
   }
 }
 </script>
