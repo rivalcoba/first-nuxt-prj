@@ -36,7 +36,7 @@ export default {
           {name: 'twitter:image', content: 'https://i.imgur.com/UYP2umJ.png'},
           {name: 'twitter:card', content: 'summary_large_image'},
         ]
-    },
+    }
   },
   computed: {
     posts(){
